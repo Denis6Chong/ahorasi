@@ -2,9 +2,9 @@ import reflex as rx
 import link_bioo.styles.styles as styles
 from link_bioo.pages.index import index 
 from link_bioo.pages.courses import courses
+from link_bioo.api.api import hello
 
-class State(rx.State):
-    """Define your app state here."""
+
 
 
             
@@ -21,4 +21,6 @@ app = rx.App(
     #]
 
 )
+
+app.api.add_api_route("/hello", hello)
 

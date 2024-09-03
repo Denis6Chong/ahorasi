@@ -5,6 +5,15 @@ from link_bioo.views.header.header import header
 from link_bioo.views.index_links import links
 from link_bioo.componants.footer import footer
 import link_bioo.styles.styles as styles
+from link_bioo.api.api import hello
+
+
+class IndexState(rx.State):
+    
+    @rx.var
+    def say_hello(self):
+        return hello()
+
 
 @rx.page(
         title=utils.index_title,
@@ -18,7 +27,8 @@ def index() -> rx.Component:
         utils.lang(),
         navbar(),
             rx.center(
-                rx.vstack( 
+                rx.vstack(
+                    rx.text(IndexState.say_hello),
                     header(),
                     links(),
                     max_width=styles.MAX_WIDTH,
